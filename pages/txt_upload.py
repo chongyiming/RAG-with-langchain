@@ -4,7 +4,7 @@ from langchain_community.document_loaders import CSVLoader
 import streamlit as st
 from langchain_ollama import OllamaLLM, OllamaEmbeddings
 from knowledge_base import KnowledgeBaseService
-st.title("Test")
+st.title("Upload custom data")
 uploader_file=st.file_uploader("Upload txt file",type=['txt'], accept_multiple_files=False)
 
 if "service" not in st.session_state:

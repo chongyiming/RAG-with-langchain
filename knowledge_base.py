@@ -41,7 +41,7 @@ class KnowledgeBaseService(object):
     def upload_by_str(self,data,filename):
         md5_hex=get_string_md5(data)
         if check_md5(md5_hex):
-            return "skip"
+            return "Duplicated data"
 
         if len(data)>config.max_split_char_number:
             knowledge_chunks=self.splitter.split_text(data)
@@ -56,5 +56,5 @@ class KnowledgeBaseService(object):
         self.chroma.add_texts(knowledge_chunks,metadatas=[metadata for _ in knowledge_chunks],)
         save_md5(md5_hex)
 
-        return "successfully"
+        return "Saved successfully"
 

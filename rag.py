@@ -20,6 +20,8 @@ class RagService(object):
 
     def __get_chain(self):
         retriever=self.vector_service.get_retriever()
+
+        
         def format_func(docs:list[Document]):
             if not docs:
                 return "no material"
@@ -28,9 +30,6 @@ class RagService(object):
                 formatted_str+=f"page_content:{doc.page_content},metadatas:{doc.metadata}"
             formatted_str+="]"
             return formatted_str
-        
-        
-
         def print_prompt(prompt):
             print("="*20)
             print(prompt.to_string())

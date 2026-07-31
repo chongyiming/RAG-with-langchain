@@ -28,8 +28,7 @@ if prompt:
     st.session_state["message"].append({"role":"user","content":prompt})
     with st.spinner():
         res=st.session_state["rag"].chain.invoke(prompt)
-      
-
-        print(repr(res))
         st.chat_message("assistant").write(res)
+        st.session_state["message"].append({"role":"assistant","content":res})
+
       
